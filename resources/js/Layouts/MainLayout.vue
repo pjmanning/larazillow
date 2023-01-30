@@ -23,7 +23,9 @@ import { Link } from "@inertiajs/vue3";
                     <Link :href="route('listing.create')" class="btn-primary"
                         >+ New Listing</Link
                     >
-                    <div>Logout</div>
+                    <Link :href="route('logout')" method="DELETE" as="button"
+                        >Logout</Link
+                    >
                 </div>
                 <div v-else>
                     <Link :href="route('login')">Sign-In</Link>
