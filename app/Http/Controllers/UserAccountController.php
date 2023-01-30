@@ -19,8 +19,8 @@ class UserAccountController extends Controller
             'email' => 'required|email|unique:users',
             'password' => 'required|min:8|confirmed',
         ]));
-        $user->password = Hash::make($user->password);
-        $user->save();
+        $user->password = $user->password;
+        // $user->save();
         Auth::login($user);
 
         return redirect()->route('listing.index')
