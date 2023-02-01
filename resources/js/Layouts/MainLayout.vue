@@ -17,10 +17,14 @@ import { Link } from "@inertiajs/vue3";
                     <Link :href="route('listing.index')">LaraZillow</Link>
                 </div>
                 <div v-if="$page.props.user" class="flex items-center gap-4">
-                    <div class="text-sm text-gray-500">
-                        {{ $page.props.user.name }}
-                    </div>
-                    <Link :href="route('listing.create')" class="btn-primary"
+                    <Link
+                        class="text-sm text-gray-500"
+                        :href="route('realtor.listing.index')"
+                        >{{ $page.props.user.name }}</Link
+                    >
+                    <Link
+                        :href="route('realtor.listing.create')"
+                        class="btn-primary"
                         >+ New Listing</Link
                     >
                     <Link :href="route('logout')" method="DELETE" as="button"
