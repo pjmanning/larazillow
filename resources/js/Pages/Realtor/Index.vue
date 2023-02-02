@@ -6,6 +6,7 @@ import Price from "@/Components/Price.vue";
 import Box from "@/Components/UI/Box.vue";
 import Pagination from "@/Components/UI/Pagination.vue";
 import RealtorFilters from "@/Pages/Realtor/Index/Components/RealtorFilters.vue";
+import EmptyState from "@/Components/UI/EmptyState.vue";
 defineProps({
     listings: Object,
     filters: Object,
@@ -19,7 +20,10 @@ defineProps({
         <RealtorFilters :filters="filters" />
     </section>
 
-    <section class="grid grid-cols-1 lg:grid-cols-2 gap-2">
+    <section
+        v-if="listings.data.length"
+        class="grid grid-cols-1 lg:grid-cols-2 gap-2"
+    >
         <Box
             v-for="listing in listings.data"
             :key="listing.id"
@@ -119,6 +123,7 @@ defineProps({
             </div>
         </Box>
     </section>
+    <EmptyState v-else>No listings yet</EmptyState>
 
     <section
         v-if="listings.data.length"
